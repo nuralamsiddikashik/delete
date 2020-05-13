@@ -1,6 +1,9 @@
 <?php
 
 namespace AdminDelete\Query;
+
+include_once("config/db.php"); 
+
 use \AdminDelete\Config\DB;
 
 class Data extends DB {

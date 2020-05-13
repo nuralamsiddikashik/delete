@@ -1,11 +1,13 @@
 <?php
 
 namespace AdminDelete;
-spl_autoload_register( function ( $classname ) {
-    $path = strtolower( str_replace( "AdminDelete\\", "", $classname ) ) . ".php";
-    $path = str_replace( "\\", "/", $path );
-    include_once ( $path );
-} );
+// spl_autoload_register( function ( $classname ) {
+//     $path = strtolower( str_replace( "AdminDelete\\", "", $classname ) ) . ".php";
+//     $path = str_replace( "\\", "/", $path );
+//     include_once ( $path );
+// } );
+
+include_once("query/data.php"); 
 
 use \AdminDelete\Query\Data;
 $displayData = new Data();
@@ -32,7 +34,7 @@ $myQuery     = $displayData->displayData();
         </div>
         <div class="row">
             <div class="column column-60 column-offset-20">
-                <button type="button" id="delete-btn">Delete</button>
+                <button type="button" id="delete-btn" name="submit">Delete</button>
             </div>
         </div>
         <div class="row">
@@ -80,7 +82,8 @@ $myQuery     = $displayData->displayData();
                             type: "POST",
                             data: {id:id},
                             success: function(data){
-                                console.log(data); 
+                                window.location = 'http://localhost/delete/'
+                                //$("table").load("delete/delete.php");
                             }
                         });
                     }
